@@ -21,8 +21,8 @@
 ### 1. Клонируйте репозиторий
 
 ```bash
-git clone https://github.com/your-repo/your-project.git
-cd your-project
+git clone https://github.com/MatthewBozey/clickise-test-task.git
+cd clickise-test-task
 ```
 
 ### 2. Установите зависимости
