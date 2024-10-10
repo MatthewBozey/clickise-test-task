@@ -1,0 +1,36 @@
+.p-toast.p-toast-top-right {
+  z-index: 1000;
+  top: 7rem;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: var(--surface-a);
+  font-family: var(--font-family);
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+.p-datatable-header {
+  text-align: center; // or center
+  display: block !important;
+
+}
+.p-datatable.p-datatable-gridlines.p-datatable-scrollable .p-datatable-tbody > tr + tr > td, .p-datatable.p-datatable-gridlines.p-datatable-scrollable .p-datatable-tbody > tr:first-child > td {
+  padding: 0.3rem 0.5rem !important;
+  height: 20px;
+}
+.p-datatable .p-datatable-tbody > tr > td {
+  padding: 0.3rem 0.5rem !important;
+  height: 20px;
+}
+.card {
+  padding: 0.8rem !important;
+}
+
+.layout-sidebar{
+  padding: 0.5rem !important;
+}

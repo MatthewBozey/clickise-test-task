@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Responses\ApiSuccessResponse;
+use App\Service\UserService;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
+
+class UserController extends BaseController
+{
+    public function __construct(UserService $service)
+    {
+        parent::__construct($service);
+    }
+
+    public static function middleware()
+    {
+        return [
+            new Middleware('checkUserExists', only: ['destroy', 'show', 'update']),
+        ];
+    }
+
+    public function store(CreateUserRequest $request)
+    {
+        return $this->service->store($request);
+    }
+
+    public function update(UpdateUserRequest $request)
+    {
+        return $this->service->update($request);
+    }
+
+    public function getUserList(Request $request): ApiSuccessResponse
+    {
+        return $this->service->getUserList();
+    }
+}
