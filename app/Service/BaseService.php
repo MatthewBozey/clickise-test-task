@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Facades\ApiSuccess;
 use App\Http\Responses\ApiSuccessResponse;
 use Illuminate\Http\Request;
 
@@ -11,17 +12,17 @@ abstract class BaseService
 
     public function get(Request $request): ApiSuccessResponse
     {
-        return new ApiSuccessResponse($this->model::orderBy('id', 'desc')->get());
+        return ApiSuccess::withData($this->model::orderBy('id', 'desc')->get());
     }
 
     public function store($request): ApiSuccessResponse
     {
-        return new ApiSuccessResponse($this->model::create($request->validated()));
+        return ApiSuccess::withData($this->model::create($request->validated()));
     }
 
     public function show(Request $request): ApiSuccessResponse
     {
-        return new ApiSuccessResponse($this->model::findOrFail($request->route('id')));
+        return ApiSuccess::withData($this->model::findOrFail($request->route('id')));
     }
 
     /**
@@ -32,7 +33,7 @@ abstract class BaseService
         $item = $this->model::findOrFail($request->route('id'));
         $item->update($request->validated());
 
-        return new ApiSuccessResponse($item);
+        return ApiSuccess::withData($item);
     }
 
     public function destroy(Request $request): ApiSuccessResponse
@@ -40,6 +41,6 @@ abstract class BaseService
         $item = $this->model::findOrFail($request->route('id'));
         $item->delete();
 
-        return new ApiSuccessResponse($item);
+        return ApiSuccess::withData($item);
     }
 }

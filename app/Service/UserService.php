@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Facades\ApiSuccess;
 use App\Http\Responses\ApiSuccessResponse;
 use App\Models\User;
 
@@ -14,7 +15,7 @@ class UserService extends BaseService
 
     public function get($request): ApiSuccessResponse
     {
-        return new ApiSuccessResponse(User::orderBy('id', 'desc')->with(['companies'])->get());
+        return ApiSuccess::withData(User::orderBy('id', 'desc')->with(['companies'])->get());
     }
 
     public function update($request): ApiSuccessResponse
@@ -24,6 +25,6 @@ class UserService extends BaseService
 
     public function getUserList(): ApiSuccessResponse
     {
-        return new ApiSuccessResponse(User::orderBy('name')->get(['id', 'name']));
+        return ApiSuccess::withData(User::orderBy('name')->get(['id', 'name']));
     }
 }

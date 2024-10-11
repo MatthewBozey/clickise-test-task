@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Facades\ApiSuccess;
 use App\Http\Responses\ApiSuccessResponse;
 use App\Models\Company;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class CompanyService extends BaseService
 
     public function get(Request $request): ApiSuccessResponse
     {
-        return new ApiSuccessResponse(Company::with(['user'])->get());
+        return ApiSuccess::withData(Company::with(['user'])->get());
     }
 
     public function update($request): ApiSuccessResponse
@@ -25,11 +26,11 @@ class CompanyService extends BaseService
         $item = $this->model::findOrFail($request->route('id'));
         $item->update($request->validated());
 
-        return new ApiSuccessResponse($item->load(['user']));
+        return ApiSuccess::withData($item->load(['user']));
     }
 
     public function getCompaniesList(): ApiSuccessResponse
     {
-        return new ApiSuccessResponse($this->model::orderBy('company_name')->get());
+        return ApiSuccess::withData($this->model::orderBy('company_name')->get());
     }
 }
