@@ -59,3 +59,4 @@ dist/
 !./_ide_helper_models.php
 
 /package-lock.json
+/composer.lock
