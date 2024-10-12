@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Facades\ApiSuccess;
+use App\Http\Responses\ApiSuccessResponse;
 use App\Models\Adds;
 use App\Models\Company;
 use App\Observers\AddsObserver;
@@ -17,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton('api.success', function ($app) {
-            return new ApiSuccess;
+            return new ApiSuccessResponse(null);
         });
     }
 

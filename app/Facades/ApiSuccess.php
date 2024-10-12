@@ -14,6 +14,6 @@ class ApiSuccess extends Facade
 
     public static function withData($data, $code = 200, $metadata = [], $headers = []): ApiSuccessResponse
     {
-        return ApiSuccess::withData($data, $code, $metadata, $headers);
+        return new ApiSuccessResponse($data, $code, $metadata, $headers);
     }
 }
