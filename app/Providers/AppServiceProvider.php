@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Facades\ApiSuccess;
 use App\Http\Responses\ApiSuccessResponse;
 use App\Models\Adds;
 use App\Models\Company;

@@ -180,7 +180,7 @@ export default {
                 <Column field="email" header="Электронная почта" />
                 <Column header="Компании" >
                     <template #body="slot">
-                        <div class="flex flex-row gap-2">
+                        <div class="flex grid gap-3 h-max-10rem m-1">
                             <div class="text-base" v-for="company in slot.data.companies" :key="company.id">{{ company.company_name }}</div>
                         </div>
                     </template>

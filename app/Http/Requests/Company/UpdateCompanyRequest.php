@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Company;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\FailedValidationHandleRequest;
 
-class UpdateCompanyRequest extends FormRequest
+class UpdateCompanyRequest extends FailedValidationHandleRequest
 {
     public function rules(): array
     {
